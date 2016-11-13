@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+<style type="text/css">
+	.container{
+		width:100%;
+		max-width:720px;
+		margin: 0px auto;
+	}
+	.header{
+		position: relative;
+		width: 100%;
+		top: 5px;
+		left: 10px;
+		color: #ae00ae;
+		z-index: 10;
+		font-family: Arial;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	.wrap{
+		width: 100%;
+		margin: 0px auto;
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+	.section{
+		width: 100%;
+		height: 800px;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		overflow: hidden;
+		opacity: 0.5;
+		z-index: -1;
+	}
+	#section1{
+		background-image: url('img/1.jpg');
+	}
+	#section2{
+		background-image: url('img/2.jpg');
+	}
+	#section3{
+		background-image: url('img/3.jpg');
+	}
+
+	.content{
+		width: 100%;
+		height: 800px;
+		text-align: center;
+	}
+	.content1 img{
+		width: 75%;
+		position: relative;
+		top: -200px;
+	}
+	.content1 .img-anim{
+		transition: all 1s;
+		-webkit-transition: all 1s;
+		top: 170px;
+	}
+	.text{
+		width: 80%;
+		margin: 0px auto;
+		position: relative;
+		top: 200px;
+		left: 400px;
+		padding: 20px;
+		text-align: left;
+		font-family: 'Microsoft YaHei';
+		font-size: 1.5em;
+	}
+	.text-anim{
+		transition: all 1s;
+		-webkit-transition: all 1s 1s;
+		left: 10px;
+	}
+	.content1 p{
+		text-indent: 2em;
+	}
+	.content2 img{
+		width: 35px;
+		border-radius: 50px;
+		float: left;
+		margin-right: 10px;
+	}
+	.chat{
+		height: 35px;
+		position: relative;
+	}
+	.chat1, .chat3{
+		padding: 0px 20px;
+		text-align: left;
+		top: 100px;
+		left: -400px;
+	}
+	.chat3{
+		top: 130px;
+	}
+	.content2 .chatbj{
+		float: left;
+		background-color: green;
+		height: 30px;
+		line-height: 30px;
+		padding: 3px 10px;
+		border-radius: 10px;
+		color: white;
+	}
+	.chat2 img, .chat4 img{
+		width: 10%;
+		border-radius: 50px;
+		float: right;
+		margin-left: 10px;
+	}
+	.chat2, .chat4{
+		padding: 0px 20px;
+		text-align: right;
+		top: 115px;
+		right: -400px;
+	}
+	.chat4{
+		top: 145px;
+	}
+	.chat2 .chatbj, .chat4 .chatbj{
+		float: right;
+	}
+	.text2{
+		top: 800px;
+		left: auto;
+	}
+	.content3 img{
+		width: 75%;
+		margin: 0px auto 20px;
+	}
+	.chat-anim1{
+		transition: all 1s 1s;
+		-webkit-transition: all 1s 1s;
+		left: 10px;
+	}
+	.chat-anim2{
+		transition: all 1s 2s;
+		-webkit-transition: all 1s 2s;
+		right: 10px;
+	}
+	.chat-anim3{
+		transition: all 1s 3s;
+		-webkit-transition: all 1s 3s;
+		left: 10px;
+	}
+	.chat-anim4{
+		transition: all 1s 4s;
+		-webkit-transition: all 1s 4s;
+		right: 10px;
+	}
+	.text-anim2{
+		transition: all 1s 5s;
+		-webkit-transition: all 1s 5s;
+		top: 150px;
+	}
+</style>
+
+</head>
+<body>
+<div class="container">
+	<div class="header">
+		Our story
+	</div>
+	<div class="wrap">
+		<div id="section1" class="section">
+			
+		</div>
+		<div id="section2" class="section">
+
+		</div>
+		<div id="section3" class="section">
+
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="content content1">
+			<img id="img1" src="img/room.jpg">
+			<div id="text1" class="text">
+				<p>还记得吗？</p>
+				<p>第一次见面应该在四教的一个教室里，刚成为研究生的我们，举行第一次班会，虽然那次我们对彼此都没有印象。</p>
+			</div>
+		</div>
+		<div class="content content2">
+			<div id="chat1" class="chat chat1">
+				<img src="img/greenpig.jpg">
+				<div class="chatbj pig">
+					Hi!
+				</div>
+			</div>
+			<div id="chat2" class="chat chat2">
+				<img src="img/cat.jpg">
+				<div class="chatbj cat">
+					Hi!
+				</div>
+			</div>
+			<div id="chat3" class="chat chat3">
+				<img src="img/greenpig.jpg">
+				<div class="chatbj pig">
+					My name is Pengjingxuan...
+				</div>
+			</div>
+			<div id="chat4" class="chat chat4">
+				<img src="img/cat.jpg">
+				<div class="chatbj cat">
+					我知道
+				</div>
+			</div>
+			<div id="text2" class="text text2">
+				<p>还记得吗？</p>
+				<p>第一次交谈是在一次英语课上，老师抽男生和女生用英语互相介绍，冥冥之中就抽到了你和我，依稀记得你用英语说了很多，我只回应了一句“我知道”，两个人都很尴尬。</p>
+			</div>
+		</div>
+		<div class="content content3">
+			<img id="img3" src="img/room.jpg">
+			<div id="text3" class="text">
+				<p>还记得吗？</p>
+				<p>之后的一个学期我们都在各自忙碌于自己的生活，你在接触有好感的女生，而我还在沉溺于第一段感情中，唯一的交集就是在实验室走廊上碰到后淡淡的微笑。</p>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+	<!-- <audio autoplay="autoplay" controls="controls">
+		<source src="http://demo.mimvp.com/html5/take_you_fly.mp3" type="audio/mpeg">
+	</audio> -->
+	<script type="text/javascript">
+		//var articleHeight = document.getElementById('section1').height;
+
+		window.onload = function(){
+			var img1 = document.getElementById('img1');
+			var text1 = document.getElementById('text1');
+			var chat1 = document.getElementById('chat1');
+			var chat2 = document.getElementById('chat2');
+			var chat3 = document.getElementById('chat3');
+			var text2 = document.getElementById('text2');
+			var img3 = document.getElementById('img3');
+			var text3 = document.getElementById('text3');
+
+			window.addEventListener('scroll', function(){
+				var scrollTop = window.scrollY;
+				if(scrollY > 0 && scrollY < 800){
+					img1.classList.add('img-anim');
+					text1.classList.add('text-anim');
+				}else if(scrollY > 800 && scrollY < (800*2)){
+					chat1.classList.add('chat-anim1');
+					chat2.classList.add('chat-anim2');
+					chat3.classList.add('chat-anim3');
+					chat4.classList.add('chat-anim4');
+					text2.classList.add('text-anim2');
+				}else if(scrollY > (800*2) && scrollY < (800*3)){
+					img3.classList.add('img-anim');
+					text3.classList.add('text-anim');
+				}
+			});
+		}
+	</script>
+</body>
+</html>
