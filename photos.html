@@ -22,6 +22,7 @@
 		height: 100%;
 		position: relative;
 		margin: 0px auto;
+		overflow: hidden;
 		
 	}
 	audio{
@@ -251,10 +252,11 @@
 </head>
 <body>
 	<div class="container" id="slider">
-		<audio src="1.wav" controls="controls" autoplay>
+		<audio src="1.wav" controls="controls">
 			Your browser does not support the audio element.
 		</audio>
 		<div class="shadowbg"></div>
+		
 		<div class="content content1" id="content1">
 			<div id="text1" class="text">
 				<div class="p1"><p>还记得吗，第一次见面？</p></div>
@@ -316,15 +318,15 @@
 				宿舍的同学提议要撮合我们，这个时候我也就把目光逐渐放到了你的身上，冥冥之中感觉你有一种忧郁的气质吸引我，因此在qq上给你留下忧郁王子的评价。</p></div>
 			</div>
 		</div>
-		<div class="content content5">
+		<!-- <div class="content content5">
 			<div id="text5" class="text">
-				
+				<div class="p1">我们一起办了旅游年卡，一起去动物园、鸽子窝游玩，互相之间也越来越熟悉，按你自己的话说，那个时候开始对我有感。后来班级组织海边烧烤，晚到的你殷勤的帮我烤东西；晚上我在外面和同学聚会，你给我打电话问用不用接我；第二天qq上主动找到，说心情不好想出去逛逛；周末请我和同学吃饭，我们到人民公园玩，买含羞草植物送给我。冷淡的你是对我有意思才做出这些试探行为吧。后来我又回请你，并去海边逛。那个时候的我们在不知不觉中都已经对对方有感觉了吧！</div>
 			</div>
-		</div>
+		</div> -->
 
 
 		<div class="foot" style="z-index:100;">
-			<a id="foot">下一页</a>
+			<a id="foot">向下滑动</a>
 		</div>
 
 		<!-- <div class="icons" id="icons">
@@ -358,6 +360,8 @@
 			objArray.text1.querySelector(".p1").classList.add("text1-anim1");
 			objArray.text1.querySelector(".p2").classList.add("text1-anim2");
 			objArray.text1.querySelector("img").classList.add("img-anim");
+
+			objArray.slider = document.getElementById("slider");
 		}
 		function scrollEvent(){
 			var scrollTop = window.scrollY;
@@ -368,68 +372,81 @@
 			init();
 			console.log(objArray);
 			clickBind();
-			window.addEventListener('scroll', scrollEvent);
+			//window.addEventListener('scroll', scrollEvent);
+
+			wrapslider.init();
+			
 		}
 
-		// var wrapslider = {
-		// 	//判断设备是否支持touch事件
-		// 	touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
+		var wrapslider = {
+			//判断设备是否支持touch事件
+			touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
 
-		// 	slider = document.getElementById("slider"),
+			ss: document.getElementById("slider"),
 
-		// 	//事件
-		// 	events: {
-		// 		slider = this.slider,
-		// 		handleEvent: function(event){
-		// 			var self = this;
-		// 			if(event.type == "touchstart"){
-		// 				self.start(event);
-		// 			}else if(event.type == "touchmove"){
-		// 				self.move(event);
-		// 			}else if(event.type == "touchend"){
-		// 				self.end(event);
-		// 			}
-		// 		},
-		// 		//滑动开始
-		// 		start: function(event){
-		// 			var touch = event.targetTouches[0];
-		// 			startPos = {
-		// 				x: touch.pageX,
-		// 				y: touch.pageY,
-		// 				time: +new Date
-		// 				};
-		// 			isScrolling = 0;
-		// 			this.slider.addEventListener("touchmove", this, false);
-		// 			this.slider.addEventListener("touchend", this, false);
-		// 		}
-		// 		//移动
-		// 		move: function(event){
-		// 			if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
-		// 			var touch = event.targetTouches[0];
-		// 			endPos = {
-		// 				x: touch.pageX - startPos.x,
-		// 				y: touch.pageY - startPos.y
-		// 			}
-		// 			//0为横向滑动，1为纵向滑动
-		// 			isScrolling = Math.abs(endPos.x) < Math.abs(endPos.y) ? 1 : 0;
-		// 			if(isScrolling === 0){
-		// 				event.preventDefault();
+			//事件
+			events: {
+				slider : this.ss,
+				handleEvent: function(event){
+					var self = this;
+					if(event.type == "touchstart"){
+						self.start(event);
+					}else if(event.type == "touchmove"){
+						self.move(event);
+					}else if(event.type == "touchend"){
+						self.end(event);
+					}
+				},
+				//滑动开始
+				start: function(event){
+					var touch = event.targetTouches[0];
+					startPos = {
+						x: touch.pageX,
+						y: touch.pageY,
+						time: +new Date
+						};
+					isScrolling = 0;
+					console.log(startPos.x, startPos.y, startPos.time);
+					this.slider.addEventListener("touchmove", this, false);
+					this.slider.addEventListener("touchend", this, false);
+				},
+				//移动
+				move: function(event){
+					//event.targetTouches,代表触摸的点数
+					if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+					var touch = event.targetTouches[0];
+					endPos = {
+						x: touch.pageX - startPos.x,
+						y: touch.pageY - startPos.y
+					}
+					//0为横向滑动，1为纵向滑动
+					isScrolling = Math.abs(endPos.x) < Math.abs(endPos.y) ? 1 : 0;
+					console.log(isScrolling);
+					if(isScrolling === 0){
+						event.preventDefault();
 
-		// 			}
+					}
 
-		// 		},
-		// 		//滑动释放
-		// 		end: function(event){
-		// 			var duration = +new Date - startPos.time;
-		// 			if(isScrolling === 0){
+				},
+				//滑动释放
+				end: function(event){
+					var duration = +new Date - startPos.time;
+					if(isScrolling === 0){
 
-		// 			}
-		// 			//解绑事件
-		// 			this.slider.removeEventListener("touchmove",this,false);
-		// 			this.slider.removeEventListener("touchend", this, false);
-		// 		}
-		// 	}
-		// }
+					}
+					//解绑事件
+					this.slider.removeEventListener("touchmove",this,false);
+					this.slider.removeEventListener("touchend", this, false);
+				}
+			},
+
+			//初始化
+    		init:function(){
+        		var self = this;     //this指slider对象
+        		if(!!self.touch) self.slider.addEventListener('touchstart',self.events,false);    
+        		//addEventListener第二个参数可以传一个对象，会调用该对象的handleEvent属性
+    		}
+		}
 
 
 		//用于测试的PC端的click事件
