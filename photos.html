@@ -30,7 +30,11 @@
 	}
 	.foot{
 		position: absolute;
-		bottom: 5rem;
+		width: 100px;
+		bottom: 1rem;
+		left: 50%;
+		margin-left: -50px;
+		text-align: center;
 	}
 	.content{
 		box-sizing: content-box;
@@ -248,13 +252,47 @@
 		-webkit-transition: all 1s 2s;
 		width: 100%;
 	}
+
+	.music{
+		position: absolute;
+		right: .5rem;
+		top: .5rem;
+		z-index: 99;
+	}
+	.music img{
+		width: 1.5rem;
+	}
+	.music-anim{
+		animation: rotating 1.2s linear infinite;
+		-webkit-animation: rotating 1.2s linear infinite;
+	}
+	@-webkit-keyframes rotating{
+		from{
+			-webkit-transform: rotate(0);
+		}
+		to{
+			-webkit-transform: rotate(360deg);
+		}
+	}
+	@keyframes rotating{
+		from{
+			transform: rotate(0);
+		}
+		to{
+			transform: rotate(360deg);
+		}
+	}
 	</style>
 </head>
 <body>
 	<div class="container" id="slider">
-		<audio src="1.wav" controls="controls">
-			Your browser does not support the audio element.
-		</audio>
+		
+		<div class="music" >
+			<img id="music" src="img/music.png" class="music-anim">
+			<audio loop id="media" src="1.wav" autoplay="autoplay">
+				Your browser does not support the audio element.
+			</audio>
+		</div>
 		<div class="shadowbg"></div>
 		
 		<div class="content content1" id="content1">
@@ -326,7 +364,7 @@
 
 
 		<div class="foot" style="z-index:100;">
-			<a id="foot">向下滑动</a>
+			<a id="foot">向上滑动</a>
 		</div>
 
 		<!-- <div class="icons" id="icons">
@@ -341,7 +379,10 @@
 		var objArray = {};
 		function init(){
 			objArray.index = 1;
+			objArray.isplay = true;
 			objArray.body = document.querySelector("body");
+			objArray.music = document.getElementById("music");
+			objArray.media = document.getElementById("media");
 			objArray.img1 = document.getElementById("img1");
 			objArray.text1 = document.getElementById("text1");
 			objArray.text2 = document.getElementById("text2");
@@ -361,32 +402,28 @@
 			objArray.text1.querySelector(".p2").classList.add("text1-anim2");
 			objArray.text1.querySelector("img").classList.add("img-anim");
 
-			objArray.slider = document.getElementById("slider");
+			//objArray.slider = document.getElementById("slider");
+			
+			wrapslider.init();
+			clickBind();
 		}
 		function scrollEvent(){
 			var scrollTop = window.scrollY;
 				
 		}
 		window.onload = function(){
-			console.log("aa");
 			init();
-			console.log(objArray);
-			clickBind();
-			//window.addEventListener('scroll', scrollEvent);
-
-			wrapslider.init();
-			
 		}
 
 		var wrapslider = {
 			//判断设备是否支持touch事件
 			touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
 
-			ss: document.getElementById("slider"),
+			slider: document.getElementById("slider"),
 
 			//事件
 			events: {
-				slider : this.ss,
+				slider : this.slider,
 				handleEvent: function(event){
 					var self = this;
 					if(event.type == "touchstart"){
@@ -399,6 +436,7 @@
 				},
 				//滑动开始
 				start: function(event){
+					console.log("touchstart");
 					var touch = event.targetTouches[0];
 					startPos = {
 						x: touch.pageX,
@@ -407,6 +445,7 @@
 						};
 					isScrolling = 0;
 					console.log(startPos.x, startPos.y, startPos.time);
+					console.log(this.slider);
 					this.slider.addEventListener("touchmove", this, false);
 					this.slider.addEventListener("touchend", this, false);
 				},
@@ -424,15 +463,13 @@
 					console.log(isScrolling);
 					if(isScrolling === 0){
 						event.preventDefault();
-
 					}
-
 				},
 				//滑动释放
 				end: function(event){
 					var duration = +new Date - startPos.time;
-					if(isScrolling === 0){
-
+					if(isScrolling === 1){
+						switchPage();
 					}
 					//解绑事件
 					this.slider.removeEventListener("touchmove",this,false);
@@ -442,7 +479,8 @@
 
 			//初始化
     		init:function(){
-        		var self = this;     //this指slider对象
+        		var self = this;     //this指wrapslider对象
+        		console.log(self);
         		if(!!self.touch) self.slider.addEventListener('touchstart',self.events,false);    
         		//addEventListener第二个参数可以传一个对象，会调用该对象的handleEvent属性
     		}
@@ -453,6 +491,9 @@
 		function clickBind(){
 			objArray.foot.addEventListener('click', function(){
 				switchPage();
+			}, false);
+			objArray.music.addEventListener('click', function(){
+				switchMusicIsPlay();
 			}, false);
 		}
 
@@ -487,7 +528,19 @@
 				}
 			}
 			objArray.index++;
-			
+		}
+
+		//切换背景音乐是否播放
+		function switchMusicIsPlay(){
+			if(objArray.isplay){
+				objArray.music.classList.remove("music-anim");
+				objArray.media.pause();
+				objArray.isplay = false;
+			}else{
+				objArray.music.classList.add("music-anim");
+				objArray.media.play();
+				objArray.isplay = true;
+			}
 		}
 	</script>
 </body>
