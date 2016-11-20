@@ -258,34 +258,81 @@
 	#text5{
 		margin-top: 3rem;
 	}
-	#text5 div{
+	#text5 .wrap{
 		position: relative;
 		top: -1000px;
 	}
+	/*#text5 div{
+		position: relative;
+		top: -1000px;
+	}*/
+	
 	#text5 p{
 		font-size: 1rem;
 		line-height: 1.5rem;
 	}
 	#text5 figure{
-		margin: 0 2rem;
+		margin: 0px;
+		text-align: left;
 	}
 	#text5 figure img{
-		width: 0px;
+		width: 70%;
 	}
-	#text5 .text5-anim1{
+	#text5 figure .img1{
+		float: left;
+		margin-right: .5rem;
+		margin-bottom: .5rem;
+	}
+	#text5 figure .img2{
+		float: right;
+	}
+	#text5 .div-anim{
 		transition: all 1s 1s;
 		-webkit-transition: all 1s 1s;
-		top: 0.5rem;
+		top: 0px;
+	}
+	/*#text5 .text5-anim1{
+		transition: all 1s 9s;
+		-webkit-transition: all 1s 9s;
+		top: 1.5rem;
 	}
 	#text5 .text5-anim2{
-		transition: all 1s 3s;
-		-webkit-transition: all 1s 3s;
+		transition: all 1s 11s;
+		-webkit-transition: all 1s 11s;
 		top: 1rem;
 	}
-	#text5 .img-anim{
-		transition: all 1s 2s;
-		-webkit-transition: all 1s 2s;
-		width: 100%;
+	#text5 .img-anim1{
+		transform: rotate(15deg);
+		animation: text5-anim1 4s 1s;
+		animation-fill-mode: forwards; //动画结束后保持最后一帧的状态
+	}
+	#text5 .img-anim2{
+		transform: rotate(-15deg);
+		animation: text5-anim1 4s 5s;
+		animation-fill-mode: forwards;
+	}*/
+	@keyframes text5-anim1{
+		0%{
+			top: -1000px;
+			width: 45%;
+		}
+		25%{
+			top: 0.5rem;
+			width: 45%;
+		}
+		50%{
+			top: 0.5rem;
+			width: 100%;
+		}
+		60%{
+			top: 0.5rem;
+			width: 100%;
+		}
+		100%{
+			top: 0.5rem;
+			width: 45%;
+
+		}
 	}
 	/*text5 end*/
 
@@ -478,6 +525,38 @@
 			transform: rotate(360deg);
 		}
 	}
+
+	/*timeline begin*/
+	.timeline{
+		position: relative;
+	}
+	.line{
+		width: .2rem;
+		height: 100rem;
+		background-color: #c7c7c7;
+		position: absolute;
+		left: 1rem;
+	}
+	.time{
+		width: 15rem;
+		height: 15rem;
+		border-radius: 10px;
+		font-size: .8rem;
+		position: relative;
+	}
+	.wrap{
+		background-color: #ffffff;
+		padding: 1.5rem;
+		position: absolute;
+		border: solid 1px #c7c7c7;
+		border-shadow: 1rem 1rem #c7c7c7 1rem 1rem;
+	}
+	.wrap img{
+		width: 100%;
+		border-radius: 5px;
+		margin-bottom: .5rem;
+	}
+	/*timeline end*/
 	</style>
 </head>
 <body>
@@ -536,7 +615,7 @@
 		<div class="content content3">
 			<div id="text3" class="text">
 				<figure><img src="img/room2.jpg"></figure>
-				<div class="p1"><p >之后的那一个学期我们都在各自忙碌于自己的生活，你在接触有好感的女生，而我还在沉溺于第一段感情中，唯一的交集就是在实验室走廊上碰到后淡淡的微笑。</p></div>
+				<div class="p1"><p>之后的那一个学期我们都在各自忙碌于自己的生活，你在接触有好感的女生，而我还在沉溺于第一段感情中，唯一的交集就是在实验室走廊上碰到后淡淡的微笑。</p></div>
 				<div class="p2"><p >那个时候的我们可以算是知道对方名字的陌生人吧，你对我的印象可能就是班上的党支书，而我对你的印象也停留在珊珊每天唠叨中提到的你。</p></div>
 			</div>
 		</div>
@@ -554,11 +633,16 @@
 		</div>
 		<div class="content content5">
 			<div id="text5" class="text">
-				<div class="p1"><p>我们一起办了旅游年卡，一起去动物园、鸽子窝游玩，互相之间也越来越熟悉，按你自己的话说，那个时候开始对我有感。后来班级组织海边烧烤，晚到的你殷勤的帮我烤东西；晚上我在外面和同学聚会，你给我打电话问用不用接我；第二天qq上主动找到，说心情不好想出去逛逛；周末请我和同学吃饭，我们到人民公园玩，买含羞草植物送给我。冷淡的你是对我有意思才做出这些试探行为吧。后来我又回请你，并去海边逛。那个时候的我们在不知不觉中都已经对对方有感觉了吧！</p></div>
-				<div class="p2">
+			<div class="wrap">
+				<figure><img class="img1" src="img/51.jpg"></figure>
+				<figure><img class="img2"  src="img/52.jpg"></figure>
+				<div class="p1"><p>还记得，这些照片吗？</p></div>
+				<div class="p2"><p>我们一起办了旅游年卡，一起去动物园、鸽子窝游玩，互相之间也越来越熟悉，按你自己的话说，那个时候开始对我有感。后来班级组织海边烧烤，晚到的你殷勤的帮我烤东西；晚上我在外面和同学聚会，你给我打电话问用不用接我；第二天qq上主动找到，说心情不好想出去逛逛；周末请我和同学吃饭，我们到人民公园玩，买含羞草植物送给我。冷淡的你是对我有意思才做出这些试探行为吧。后来我又回请你，并去海边逛。那个时候的我们在不知不觉中都已经对对方有感觉了吧！</p></div>
+			</div>
+				<!-- <div class="p2">
 					<p>后来我开始到西校区练车，你给自行车装了后座，练车后会来接我，每天晚上都送我回宿舍，那个时候你心里
 					你心里是什么感觉呢，是不是很激动呢？</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="content content6">
@@ -593,6 +677,111 @@
 				<div class="p1"><p>还记得，你第一次给我脸色看吗？</p></div>
 				<div class="p2">
 					<p>还清楚的记得，你第一次和我甩脸色。那个时候我为了考教师资格证去医院体检，结果没有带照片，你回学校帮我拿了一趟照片，我当时的急脾气应该是心情不好了吧，后来体检完回到实验室，那天删了我qq的前男友又加了我为好友，你中午来叫我吃饭，去食堂的路上我和你说话你就爱理不理的，吃饭的时候也是没有什么心情，吃完饭去实验室的路上我就怒了，搞不清楚你为什么会黑着一张脸，我问你你也不说，真是有种要气死我的感觉。回到信息馆，我们也没有回实验室，而是在三楼的走廊里做着，我脾气比较急，最讨厌沉默不言的安静抗议。后来，你突然冒出来一句：“你在我和他之间做个选择吧”，我刚听到这句话都蒙了，不知道你在说什么，想了一下才明白过来原来你是在吃醋，看着你认真让我做选择的样子，我的脾气马上就烟消云散了，我没想到你看到了我的qq，也没想到你会这么在意，当时真的觉得你吃醋的样子真可爱。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="timeline">
+			<div class="time p1">
+				<div class="wrap card1">
+					<img src="img/time1.jpg">
+					<span>在北京实习初期，住的很远的我们第一次一起到北京天安门游玩。</span>
+				</div>
+				<div class="wrap card2">
+					<img src="img/time2.jpg">
+					<span>我们终于找到了住的地方，开始了同居的生活，新房子中给轩轩过的第一个生日。</span>
+				</div>
+				<div class="wrap card3">
+					<img src="img/time3.jpg">
+					<span>毕业终点，我们开始了异地恋生活，轩轩出去玩送给我的儿童节礼物--机器猫。</span>
+				</div>
+				<div class="wrap card4">
+					<img src="img/time4.jpg">
+					<span>辛苦的异地恋开始，我们在北京过的第一个中秋节，看起来是不是还不错，都是素食。</span>
+				</div>
+				<div class="wrap card5">
+					<img src="img/time5.jpg">
+					<span>老公第一次给我零花钱啊，五百块钱虽然不多，心意不错，后来也没给过几次。。。</span>
+				</div>
+				<div class="wrap card6">
+					<img src="img/time6.jpg">
+					<span>在北京给我庆祝的第一个生日，长寿面和生日蛋糕，但好像没给准备礼物哦！！</span>
+				</div>
+				<div class="wrap card7">
+					<img src="img/time7.jpg">
+					<span>这是在轩轩送我回学校，在地铁上自拍的，我给它取了个名字《地铁千年之恋》，是不是很有感觉。</span>
+				</div>
+				<div class="wrap card8">
+					<img src="img/time8.jpg">
+					<span>清明节放假，我们一起到永旺商场逛，吃饭的时候留下的，还有很多搞怪照片啊。</span>
+				</div>
+				<div class="wrap card9">
+					<img src="img/time9.jpg">
+					<span>五一小假，我们一起到奥林匹克森林公园游玩，穿的还是情侣衫啊，是不是很酷！</span>
+				</div>
+				<div class="wrap card10">
+					<img src="img/time10.jpg">
+					<span>恋爱三周年，轩轩送给我的大鳄鱼，安静的陪着我。</span>
+				</div>
+				<div class="wrap card11">
+					<img src="img/time11.jpg">
+					<span>谈恋爱三年多，才第一次去电影院看电影，像我们这样的情侣也不多吧，《捉妖记》还挺好看的。</span>
+				</div>
+				<div class="wrap card12">
+					<img src="img/time12.jpg">
+					<span>轩轩送给我的七夕节礼物，是我半主动要的，可惜到现在的都从来没用过。</span>
+				</div>
+				<div class="wrap card13">
+					<img src="img/time13.jpg">
+					<span>我们一起洗脚的场景，我的瘦脚都被传染成胖脚了，两双胖脚。</span>
+				</div>
+				<div class="wrap card14">
+					<img src="img/time14.jpg">
+					<span>不知不觉到北京两年了，也搬了两次家了，新家感觉不错，可以开心的住下。</span>
+				</div>
+				<div class="wrap card15">
+					<img src="img/time15.jpg">
+					<span>这是谈恋爱后轩轩第一次主动送我小礼物啊，非常值得纪念一下，以后也要多来一些小惊喜嘛！</span>
+				</div>
+				<div class="wrap card16">
+					<img src="img/time16.jpg">
+					<span>第一次和轩的大学同学在一起聚会，纪念一下吧，那天火锅买了太多东西了。</span>
+				</div>
+				<div class="wrap card17">
+					<img src="img/time17.jpg">
+					<span>我们在吵吵闹闹中，还是在双方家长见面下定了婚，这是一起选的项链--小龙猫。</span>
+				</div>
+				<div class="wrap card18">
+					<img src="img/time18.jpg">
+					<span>我的27周岁生日，时间真是过得快啊，不知不觉中就老了，轩轩的礼物是一个本，我很喜欢。</span>
+				</div>
+				<div class="wrap card19">
+					<img src="img/time19.jpg">
+					<span>清明节假期，我们一起去了八达岭长城，人真的是超多，不过玩起来感觉还好，两个人多出去转转，留下些美好记忆，就是累。</span>
+				</div>
+				<div class="wrap card20">
+					<img src="img/time20.jpg">
+					<span>五一假期，买了好多水果吃，轩轩做的水果盆，看着很有食欲吧！</span>
+				</div>
+				<div class="wrap card21">
+					<img src="img/time21.jpg">
+					<span>轩轩来岛上找我玩，一年一次真实不容易啊，照片感觉好胖O(∩_∩)O~</span>
+				</div>
+				<div class="wrap card22">
+					<img src="img/time22.jpg">
+					<span>端午节去拍了婚纱照，穿上婚纱画上妆，感觉美美的，自拍的还不错哦！</span>
+				</div>
+				<div class="wrap card23">
+					<img src="img/time23.jpg">
+					<span>四周年，我们也没有出去特别的庆祝，所以在家做了这个水果盘，纪念我们的恋爱四周年。</span>
+				</div>
+				<div class="wrap card24">
+					<img src="img/time24.jpg">
+					<span>兜兜转转，在我们恋爱1517天后，终于修的正果，领了结婚证，成为了法定夫妻。</span>
+				</div>
+				<div class="wrap card25">
+					<img src="img/time25.jpg">
+					<span>中秋节，去什刹海看夜景了，人很多，就是没有什么吃的，还去了南锣鼓巷，人都是很多啊！</span>
 				</div>
 			</div>
 		</div>
@@ -763,8 +952,11 @@
 						objArray.text4.querySelector(".p3").classList.add("text4-anim3");
 						objArray.text4.querySelector("img").classList.add("img-anim");
 					}else if(i===4){
-						objArray.text5.querySelector(".p1").classList.add("text5-anim1");
-						objArray.text5.querySelector(".p2").classList.add("text5-anim2");
+						// objArray.text5.querySelector(".p1").classList.add("text5-anim1");
+						// objArray.text5.querySelector(".p2").classList.add("text5-anim2");
+						// objArray.text5.querySelector(".img1").classList.add("img-anim1");
+						// objArray.text5.querySelector(".img2").classList.add("img-anim2");
+						objArray.text5.querySelector(".wrap").classList.add("div-anim");
 					}else if(i===5){
 						objArray.text6.querySelector(".p1").classList.add("text6-anim1");
 						objArray.text6.querySelector(".p2").classList.add("text6-anim2");
